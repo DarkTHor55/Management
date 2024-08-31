@@ -1,5 +1,6 @@
 package com.darkthor.User.Service.Impl;
 
+import com.darkthor.User.Configuration.JwtUtil;
 import com.darkthor.User.Model.User;
 import com.darkthor.User.Repository.UserRepository;
 import com.darkthor.User.Request.LoginRequest;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements IUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
+    private final JwtUtil  jwtUtil ;
     @Override
     public User signup(UserRequest request) {
         User user= User.builder()
@@ -32,11 +33,15 @@ public class UserServiceImpl implements IUserService {
     public TokenResponse login(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail());
         if(user!=null && passwordEncoder.matches(request.getPassword(),user.getPassword())&&request.getRole().equals(user.getRole())){
-            return TokenResponse.builder().token("abi esi h token").build();
+            String token = jwtUtil.generateToken(user);
+            return TokenResponse.builder().token(token).build();
         }
         return null;
 
     }
 
 
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }
