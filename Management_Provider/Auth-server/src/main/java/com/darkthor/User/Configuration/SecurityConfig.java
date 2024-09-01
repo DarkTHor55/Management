@@ -15,9 +15,12 @@ public class SecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable);
         http.cors(AbstractHttpConfigurer::disable);
-        http.authorizeHttpRequests(
-                auth -> auth.requestMatchers("/api/v1/users/**").permitAll()
-                        .anyRequest().authenticated()
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/v1/users/customer/**").hasAnyRole("Sales", "sales")
+                .requestMatchers("/api/v1/users/bill/**").hasAnyRole("Sales", "sales", "Accountant", "accountant")
+                .requestMatchers("/api/v1/users/payroll/**").hasAnyRole("HR", "hr", "Accountant", "accountant")
+//                .requestMatchers("/api/v1/users/usermanagement/**").hasAnyRole("Administrator", "administrator")
+                .anyRequest().authenticated()
         );
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();

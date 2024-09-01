@@ -11,11 +11,13 @@
     <modules>
         <module>Auth-server</module>
         <module>Customer-service</module>
-        <module>Billing-service</module>
         <module>Payroll-service</module>
+        <module>Erueka-Server</module>
+        <module>Billing-Service</module>
     </modules>
 
     <properties>
+        <spring-boot.version>3.0.5</spring-boot.version>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,6 +32,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2023.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+
 </project>
