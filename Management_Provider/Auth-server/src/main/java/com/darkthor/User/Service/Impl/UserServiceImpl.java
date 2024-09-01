@@ -1,6 +1,7 @@
 package com.darkthor.User.Service.Impl;
 
-import com.darkthor.User.Configuration.JwtUtil;
+import com.darkthor.User.Configuration.CustomUserDetails;
+import com.darkthor.User.Configuration.JwtUtils;
 import com.darkthor.User.Model.User;
 import com.darkthor.User.Repository.UserRepository;
 import com.darkthor.User.Request.LoginRequest;
@@ -9,6 +10,7 @@ import com.darkthor.User.Response.TokenResponse;
 import com.darkthor.User.Service.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements IUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtUtil  jwtUtil ;
+    private final JwtUtils jwtUtil ;
     @Override
     public User signup(UserRequest request) {
         User user= User.builder()
@@ -38,6 +40,11 @@ public class UserServiceImpl implements IUserService {
         }
         return null;
 
+    }
+    public boolean validateToken(String token) {
+        User user = userRepository.findByEmail(token);
+        UserDetails userDetails =new CustomUserDetails(user);
+        return jwtUtil.validateToken(token,userDetails);
     }
 
 

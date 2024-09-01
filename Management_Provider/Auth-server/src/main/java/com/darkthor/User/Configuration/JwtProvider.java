@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JwtProvider implements AuthenticationProvider {
     @Autowired
-    private JwtUtil jwtUtils;
+    private JwtUtils jwtUtils;
     @Autowired
     private CustomUserDetailsService userDetailsService;
 

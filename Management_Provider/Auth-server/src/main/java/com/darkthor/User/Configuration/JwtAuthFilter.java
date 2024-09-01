@@ -15,12 +15,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
     @Autowired
-    private JwtUtil jwtUtils;
+    private JwtUtils jwtUtils;
     @Autowired
     private CustomUserDetailsService userDetailsService;
 

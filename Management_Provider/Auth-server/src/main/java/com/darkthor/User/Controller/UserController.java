@@ -38,7 +38,14 @@ public class UserController {
             return new ResponseEntity<>(TokenResponse.builder().token("Invalid credentials").build(), HttpStatus.UNAUTHORIZED);
         }
     }
-
-
+    @GetMapping("/validate")
+    public String validateToken(@RequestParam("token") String token) {
+        boolean t = userService.validateToken(token);
+        if(t){
+            return "Valid token";
+        }else {
+            return "Invalid token";
+        }
+    }
 
 }

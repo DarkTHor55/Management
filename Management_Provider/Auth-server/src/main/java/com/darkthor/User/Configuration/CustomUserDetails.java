@@ -15,20 +15,21 @@ public class CustomUserDetails implements UserDetails {
     private String password;
     private List<GrantedAuthority> authorities;
 
-    //    here we extract email and password  and creating a list where authorities will be added
-//
+    // Constructor with null check
     public CustomUserDetails(User user) {
-        email = user.getEmail();
-        password = user.getPassword();
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null");
+        }
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.authorities = new ArrayList<>();
 
-        authorities = new ArrayList<>();
-//here we seprate the authorities role in array list
+        // Separate roles and add them to authorities
         String[] roles = user.getRole().split(",");
         for (String role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role));
+            this.authorities.add(new SimpleGrantedAuthority(role));
         }
     }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
