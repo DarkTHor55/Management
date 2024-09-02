@@ -1,16 +1,13 @@
 
-a	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(¬¹Ñ=8×½™ˆ›2
-b	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(½þ¹Õ8×½™ˆ›2
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷‰éº8¾–¯‡›2
+Q
+java:S1066N"/Merge this if statement with the enclosing one.(ôçÝÓÿÿÿÿÿ8ôñç‹›2
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(÷‰éº8õñç‹›2
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Þ½™ˆ›2
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8ýñç‹›2
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Þ½™ˆ›2
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8Þ½™ˆ›2
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8ýñç‹›2
 d
-java:S2094"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ýÿÿÿÿ8â½™ˆ›2
-L	java:S106)"+Replace this use of System.out by a logger.(í®µéþÿÿÿÿ8ç½™ˆ›2
-L	java:S106,"+Replace this use of System.out by a logger.(µ¨žìýÿÿÿÿ8ç½™ˆ›2
-d
-java:S1128"BRemove this unused import 'com.netflix.discovery.converters.Auto'.(Ý¼’²ùÿÿÿÿ8è½™ˆ›2
+java:S2094"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ýÿÿÿÿ8ÿñç‹›2
+o
+java:S3776 "RRefactor this method to reduce its Cognitive Complexity from 35 to the 15 allowed.(¦°–É8€òç‹›2
+L	java:S106b"+Replace this use of System.out by a logger.(ÆÎ±Üûÿÿÿÿ8„òç‹›2

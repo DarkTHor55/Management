@@ -16,8 +16,9 @@ import java.util.Objects;
 public class CustomerController {
     private final CustomerServiceImpl customerService;
 
-    @PostMapping
-    public ResponseEntity<String> createCustomer(@RequestBody Customer cus) {
+    @PostMapping("/crate")
+    public ResponseEntity<String> createCustomer(@RequestBody Customer cus,@RequestHeader("loginUserByRole")String role) {
+        System.out.println(role);
         Customer customer=customerService.createCustomer(cus);
         if (!Objects.isNull(customer)){
             return ResponseEntity.ok("Customer Created");

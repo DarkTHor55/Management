@@ -17,7 +17,8 @@ import java.util.Objects;
 public class BillController {
     private  final BillServiceImpl billService;
     @PostMapping
-    public ResponseEntity<String>createBill(@RequestBody Bill bill ){
+    public ResponseEntity<String>createBill(@RequestBody Bill bill ,@RequestHeader("loginUserByRole") String role ){
+        System.out.println(role);
         Bill b =billService.createBill(bill);
         if (!Objects.isNull(b)){
             return ResponseEntity.ok("Bill Created");

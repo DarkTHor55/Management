@@ -14,7 +14,7 @@ import java.util.List;
 public class PayrollController {
     private final PayrollServiceImpl payrollService;
 
-    @PostMapping
+    @PostMapping("/create")
     ResponseEntity<String>createPayroll(@RequestBody Payroll payroll){
         Payroll p = payrollService.createPayroll(payroll);
         if (!p.equals(null)){
