@@ -15,6 +15,7 @@
         <module>Erueka-Server</module>
         <module>Billing-Service</module>
         <module>Api-gateway</module>
+        <module>UserService</module>
     </modules>
 
     <properties>

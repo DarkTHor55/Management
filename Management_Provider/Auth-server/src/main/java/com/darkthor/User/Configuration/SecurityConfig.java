@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)  // Disable CSRF protection
                 .authorizeExchange(exchange -> exchange
-                        .pathMatchers("/api/v1/users/login","/api/v1/users/validate", "/api/v1/users/signin").permitAll()
+                        .pathMatchers("/api/v1/users/**").permitAll()
 //                        .pathMatchers("/api/v1/users/customer/**").hasAnyRole("Sales", "sales")
 //                        .pathMatchers("/api/v1/users/bill/**").hasAnyRole("Sales", "sales", "Accountant", "accountant")
 //                        .pathMatchers("/api/v1/users/payroll/**").hasAnyRole("HR", "hr", "Accountant", "accountant")

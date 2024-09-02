@@ -25,7 +25,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     }
 
     public static class Config {
-        // Put the configuration properties here
+        // Configuration properties can be added here if needed
     }
 
     @Override
@@ -78,8 +78,11 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                         if (!isSalesRoleAllowed(path)) {
                             return onError(exchange, "Sales role does not have access to this service");
                         }
+                    } else if ("administrator".equalsIgnoreCase(role)) {
+                        if (!isAdministratorRoleAllowed(path)) {
+                            return onError(exchange, "Administrator role does not have access to this service");
+                        }
                     }
-
 
                     // Continue with the request
                     return chain.filter(exchange.mutate().request(request).build());
@@ -100,27 +103,31 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         return exchange.getResponse().setComplete();
     }
 
+    // Methods to check role-based access
+
     private boolean isUserRoleAllowed(String path) {
-        return path.contains("/api/v1/users/login") ||
-                path.contains("/api/v1/users/signup") ||
-                path.contains("/api/v1/users/validate");
+        return path.matches("/api/v1/users/login(/.*)?") ||
+                path.matches("/api/v1/users/signup(/.*)?") ||
+                path.matches("/api/v1/users/validate(/.*)?");
     }
 
     private boolean isHrRoleAllowed(String path) {
-        return path.contains("/api/v1/users/payroll") ||path.contains("/api/v1/users/payroll/create");
+        return path.matches("/api/v1/users/payroll(/.*)?") ||
+                path.matches("/api/v1/users/payroll/create(/.*)?");
     }
 
     private boolean isAccountantRoleAllowed(String path) {
-        // Allow access to /api/v1/users/payroll and any sub-paths, and /api/v1/users/bill and any sub-paths
         return path.matches("/api/v1/users/payroll(/.*)?") ||
                 path.matches("/api/v1/users/bill(/.*)?");
     }
 
     private boolean isSalesRoleAllowed(String path) {
-        // Allow access to /api/v1/users/customer and any sub-paths, and /api/v1/users/bill and any sub-paths
         return path.matches("/api/v1/users/customer(/.*)?") ||
                 path.matches("/api/v1/users/bill(/.*)?");
     }
 
+    private boolean isAdministratorRoleAllowed(String path) {
+        return path.matches("/api/v1/users/management(/.*)?");
+    }
 
 }
