@@ -40,6 +40,8 @@ public class UserController {
     }
     @GetMapping("/validate")
     public String validateToken(@RequestParam("token") String token) {
+        System.out.println("Yha h /////////////////////");
+//        System.out.println(token);
         boolean t = userService.validateToken(token);
         if(t){
             return "Valid token";

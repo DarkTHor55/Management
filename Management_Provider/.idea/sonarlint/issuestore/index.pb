@@ -55,3 +55,15 @@ n
 >Api-gateway/src/main/java/com/darkthor/Configuration/Auth.java,3/8/38abdf93a2e5acaadcb8d16d785a117f26cc22c0
 w
 GAuth-server/src/main/java/com/darkthor/User/Configuration/JwtUtils.java,2/3/236b15396e8d5e52e1764e4818604302960129c8
+q
+AApi-gateway/src/main/java/com/darkthor/Filter/Authentication.java,a/f/af377d9d7387f1235387db036989ff538b5cde0a
+w
+GApi-gateway/src/main/java/com/darkthor/Filter/AuthenticationFilter.java,9/9/9923836846bca6e856b89c6ce5b8aee92128bee9
+q
+AApi-gateway/src/main/java/com/darkthor/Filter/RouteValidator.java,f/6/f631f0dce7f2afa5597ee05eba2aa682c5cc0438
+l
+<Api-gateway/src/main/java/com/darkthor/Config/AppConfig.java,d/a/dad6d3bfffe1ec97717c3a7733a6d1780b17c990
+k
+;Api-gateway/src/main/java/com/darkthor/Config/JwtUtils.java,a/9/a9142cd337e57799e7702991e3c1fc0419df34de
+i
+9Api-gateway/src/main/java/com/darkthor/Util/JwtUtils.java,5/7/57d10433f521ae0068923b39ca1e7dd91271f770

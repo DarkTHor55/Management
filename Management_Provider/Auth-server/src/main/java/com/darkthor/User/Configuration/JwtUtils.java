@@ -16,10 +16,13 @@ import java.util.Date;
 import java.util.function.Function;
 @Component
 public class JwtUtils {
-    private static final String SECRECT = createSecretKey();
+    private static final String SECRECT ="Doha6EyBEBrUX5fPTXuByGJqBf9VPFDFWjM6QgKTvzw";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+    public String extractEmail(String token) {
+        return extractClaim(token, claims -> claims.get("email", String.class));
     }
 
 
@@ -62,13 +65,13 @@ public class JwtUtils {
                 .compact();
     }
 
-    private static String createSecretKey() {
-        SecureRandom secureRandom = new SecureRandom();
-        byte[] secretBytes = new byte[36];
-        secureRandom.nextBytes(secretBytes);
-        Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
-        return encoder.encodeToString(secretBytes);
-    }
+//    private static String createSecretKey() {
+//        SecureRandom secureRandom = new SecureRandom();
+//        byte[] secretBytes = new byte[32]; // 32 bytes = 256 bits
+//        secureRandom.nextBytes(secretBytes);
+//        Base64.Encoder encoder = Base64.getUrlEncoder().withoutPadding();
+//        return encoder.encodeToString(secretBytes);
+//    }
     public SecretKey getKey() {
 
         byte[] keyByte = Decoders.BASE64URL.decode(SECRECT);

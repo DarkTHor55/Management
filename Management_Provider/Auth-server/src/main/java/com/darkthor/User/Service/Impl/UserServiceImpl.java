@@ -42,7 +42,11 @@ public class UserServiceImpl implements IUserService {
 
     }
     public boolean validateToken(String token) {
-        User user = userRepository.findByEmail(token);
+        System.out.println(token);
+        String email=jwtUtil.extractEmail(token);
+        System.out.println(email);
+        User user = userRepository.findByEmail(email);
+        System.out.println(user.getEmail());
         UserDetails userDetails =new CustomUserDetails(user);
         return jwtUtil.validateToken(token,userDetails);
     }
