@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public TokenResponse login(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail());
-        if(user!=null && passwordEncoder.matches(request.getPassword(),user.getPassword())&&request.getRole().equals(user.getRole())){
+        if(user!=null && passwordEncoder.matches(request.getPassword(),user.getPassword())){
             String token = jwtUtil.generateToken(user);
             return TokenResponse.builder().token(token).build();
         }
