@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -8,11 +9,13 @@ const SignupPage = () => {
   const [error, setError] = useState(""); // To store error messages if needed
   const [success, setSuccess] = useState(""); // To store success messages if needed
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:8888/api/v1/users/signin", {
+      const response = await fetch("http://localhost:8888/api/v1/users/signin", {  // Update the endpoint if needed
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,6 +31,9 @@ const SignupPage = () => {
       
       if (result.success) {
         setSuccess("Signup successful!");
+        setTimeout(() => {
+          navigate("/login"); // Redirect to login page after successful signup
+        }, 2000); // Optional: delay redirect for 2 seconds to show success message
       } else {
         setError(result.message || "Signup failed.");
       }

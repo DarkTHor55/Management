@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(120deg, #2980b9, #8e44ad);
@@ -81,4 +81,26 @@ button:hover {
     width: 100%;
     padding: 20px;
   }
+}
+
+/* AccessDenied.css */
+
+.access-denied-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f8d7da;
+  color: #721c24;
+  font-family: Arial, sans-serif;
+}
+
+.access-denied-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.access-denied-container p {
+  font-size: 1.5rem;
 }

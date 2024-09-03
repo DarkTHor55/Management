@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import * as jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const eSubmit = async (e) => {
         e.preventDefault();
-        
+
         try {
             const response = await fetch('http://localhost:8888/api/v1/users/login', {
                 method: 'POST',
@@ -21,8 +24,25 @@ function LoginPage() {
             }
 
             const data = await response.json();
-            console.log('Login successful', data);
-            // Redirect to another page or update UI here
+
+            const token = data.token;
+
+            const decodedToken = jwt_decode.jwtDecode(token); 
+            const userRole = decodedToken.role;
+            const userEmail = decodedToken.email;
+
+            
+            localStorage.setItem('authToken', token);
+            localStorage.setItem('userRole', userRole);
+            localStorage.setItem('userEmail', userEmail);
+
+            console.log('Login successful');
+            console.log('Role:', userRole);
+            console.log('Email:', userEmail);
+            console.log(token);
+            
+
+                navigate('/home');
         } catch (error) {
             console.error('Error during login:', error);
         }

@@ -1,5 +1,4 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(®ª„åùÿÿÿÿ8ä÷Ç‹›2
-L	java:S106"+Replace this use of System.out by a logger.(Ï±Èÿþÿÿÿÿ8ñ÷Ç‹›2
 G
 java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8ô÷Ç‹›2

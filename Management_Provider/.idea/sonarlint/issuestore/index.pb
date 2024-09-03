@@ -101,3 +101,9 @@ t
 DUserService/src/main/java/com/darkthor/Configuration/CorsConfig.java,6/d/6d932cd0bf26e6e59dd805bd37874604742710e1
 y
 IErueka-Server/src/main/java/com/darkthor/eureka_server/GatewayConfig.java,4/a/4aca1f96c3b90506ae2d9f440a9eecc2d1ebb451
+}
+MPayroll-service/src/main/java/com/darkthor/PlayrollService/Model/Payroll.java,7/0/707acb7313db3928f4723e9c93d03cd1a79ef291
+
+OCustomer-service/src/main/java/com/darkthor/CustomerService/Model/Customer.java,f/a/faf499858ea564d112ff30ac7f8f4e47b905bae7
+y
+IBilling-Service/src/main/java/com/darkthor/BillingService/Model/Bill.java,5/2/52003d4126243ced1601d77daa8b25204baa2501

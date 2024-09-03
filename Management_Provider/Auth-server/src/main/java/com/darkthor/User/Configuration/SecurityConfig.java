@@ -36,13 +36,13 @@ public class SecurityConfig {
 //                .cors(cors->cors.configurationSource(apiConfigurationSource()))
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers("/api/v1/users/**").permitAll()
-//                        .pathMatchers("/api/v1/users/customer/**").hasAnyRole("Sales", "sales")
-//                        .pathMatchers("/api/v1/users/bill/**").hasAnyRole("Sales", "sales", "Accountant", "accountant")
+//                        .pathMatchers("/api/v1/users/customer/**").hasAnyRole("SALES", "sales")
+//                        .pathMatchers("/api/v1/users/bill/**").hasAnyRole("SALES", "sales", "Accountant", "accountant")
 //                        .pathMatchers("/api/v1/users/payroll/**").hasAnyRole("HR", "hr", "Accountant", "accountant")
                         .anyExchange().authenticated()  // All other requests require authentication
                 );
         return http.build();
-    }WITH (FORCE)
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

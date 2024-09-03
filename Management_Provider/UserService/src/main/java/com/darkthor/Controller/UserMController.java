@@ -26,6 +26,17 @@ public class UserMController {
         logger.info("User email: {}", user.getEmail());
         return ResponseEntity.ok(user);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<User> Updateuser(@PathVariable("id") Long id,@RequestBody User user) {
+        User userToUpdate = userService.getUser(id);
+        if (userToUpdate == null) {
+            return ResponseEntity.notFound().build();
+        }
+        User updatedUser=userService.updateUser(id,user);
+        logger.info("User email updated: {}", updatedUser.getEmail());
+        return ResponseEntity.ok(updatedUser);
+
+    }
 
     @GetMapping
     public ResponseEntity<List<User>> users() {

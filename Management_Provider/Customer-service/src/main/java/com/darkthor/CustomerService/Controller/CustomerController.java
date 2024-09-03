@@ -13,12 +13,12 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/api/v1/users/customer")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class CustomerController {
     private final CustomerServiceImpl customerService;
 
-    @PostMapping("/crate")
-    public ResponseEntity<String> createCustomer(@RequestBody Customer cus,@RequestHeader("loginUserByRole")String role) {
-        System.out.println(role);
+    @PostMapping("/create")
+    public ResponseEntity<String> createCustomer(@RequestBody Customer cus) {
         Customer customer=customerService.createCustomer(cus);
         if (!Objects.isNull(customer)){
             return ResponseEntity.ok("Customer Created");
